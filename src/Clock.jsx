@@ -24,7 +24,13 @@ export default function Clock() {
 
     hours = hours % 12 || 12;
 
-    return `${hours}:${minutes}:${seconds} ${meridian}`;
+    return `${paddinZero(hours)}:${paddinZero(minutes)}:${paddinZero(
+      seconds
+    )} ${meridian}`;
+  }
+
+  function paddinZero(number) {
+    return (number < 10 ? "0" : "") + number;
   }
   useEffect(() => {
     document.title = formatTime();
